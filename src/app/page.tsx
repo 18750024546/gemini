@@ -130,8 +130,9 @@ export default function Home() {
       }
 
       // Update history with final complete message
-      const finalMessages = [...newMessages, { role: 'model', text: accumulatedResponse }];
-      const finalHistory = newHistory.map(session => 
+      const finalCompleteMsg: ChatMessage = { role: 'model', text: accumulatedResponse };
+      const finalMessages: ChatMessage[] = [...newMessages, finalCompleteMsg];
+      const finalHistory: ChatSession[] = newHistory.map(session => 
         session.id === chatId 
           ? { ...session, messages: finalMessages } 
           : session
@@ -252,8 +253,9 @@ export default function Home() {
         });
       }
 
-      const finalMessages = [...newMessages, { role: 'model', text: accumulatedResponse }];
-      const finalHistory = newHistory.map(session => 
+      const finalCompleteMsg: ChatMessage = { role: 'model', text: accumulatedResponse };
+      const finalMessages: ChatMessage[] = [...newMessages, finalCompleteMsg];
+      const finalHistory: ChatSession[] = newHistory.map(session => 
         session.id === currentChatId 
           ? { ...session, messages: finalMessages } 
           : session
