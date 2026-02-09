@@ -140,6 +140,8 @@ export async function POST(req: Request) {
             let buffer = '';
             let capturedMetadata: any = null;
 
+            if (!response.body) throw new Error('Response body is null');
+
             for await (const chunk of response.body) {
                 const chunkStr = chunk.toString();
                 buffer += chunkStr;
